@@ -12,6 +12,9 @@ object PriceDataRepo {
     private var _currentPrice = MutableStateFlow(0f)
     val currentPrice: StateFlow<Float> get() = _currentPrice
 
+    // Добавляем дополнительный геттер
+    val price: Float get() = currentPrice.value
+
     fun update() {
         previousPrice = currentPrice.value
         _currentPrice.value = Random.nextInt(20, 35) + Random.nextFloat()
